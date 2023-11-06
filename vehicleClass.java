@@ -194,8 +194,7 @@ public static int count = 0;
 			return "There are no tickets on file. No extra costs incurred";
 		else {
 			finalTicketCost = tickets*ticketCost;
-			return tickets + " tickets multiplied by " + ticketCost + 
-					" per ticket equals " + finalTicketCost;
+			return tickets + " tickets multiplied by the vehicle multiplier of your vehicle";
 		}
 	}
 	public int getTicketCosts() {

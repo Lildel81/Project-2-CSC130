@@ -30,7 +30,7 @@ public class carTypes {
 			
 		}
 		
-		
+		//List of vehicles based on makes
 		static String[] Makes = {"Honda", "Toyota", "Chevrolet", "Ford", "Nissan", "Kia", "Acura", "Lexus", "Mercedes"};
 		static String[] HondaModels = {"Civic", "Accord", "Odessy", "Ridgeline", "CRZ", "S2000"};
 		static String[] ToyotaModels = {"Sienna", "Corolla", "Rav-4", "Tacoma", "Tundra", "Camry"};
@@ -42,7 +42,7 @@ public class carTypes {
 		static String[] LexusModels = {"GX", "IS", "LX", "NX", "RZ", "LS"};
 		static String[] MercModels = {"A-Class", "E-Class", "G-Class", "S-Class", "GLE-Class"};
 		
-		
+		//list of vehicle types used in evaluating the cost of registration
 		static String[] SUV = {"Rav-4", "Pathfinder", "Rogue", "Sportage", "Seltos", "Sorento", "MDX", "RDX", "GX", "G-Class", "GLE-Class"};
 		static String[] compact = {"Civic", "CRZ", "Corolla", "Focus", "Versa", "Rio", "Forte", "Integra", "A-Class"};
 		static String[] sedan = {"Accord", "Camry", "Malibu", "Fusion", "Stinger", "TLX", "ILX", "IS", "LX", "LS", "E-Class", "S-Class"};
@@ -51,6 +51,7 @@ public class carTypes {
 									"F-250", "F-250 SuperDuty", "Frontier"};
 		static String[] miniVan = {"Odessy", "Sienna", "Windstar", "Quest"};
 		
+		//length of the arrays used in the sizeOf() method
 		private static int makesSize = Makes.length;
 		private static int hondaSize = HondaModels.length;
 		private static int toyotaSize = ToyotaModels.length;
@@ -62,8 +63,7 @@ public class carTypes {
 		private static int lexusSize = LexusModels.length;
 		private static int mercSize = MercModels.length;
 		
-		carTypes myCars = new carTypes(Makes, HondaModels, ToyotaModels, ChevyModels, FordModels,
-				NissanModels, KiaModels, AcuraModels, LexusModels, MercModels);
+		
 		//getter methods
 		
 		public static String getMake(int i) {
@@ -197,15 +197,3 @@ public class carTypes {
 	
 	
 	
-/*
-String[] makes = {"Honda", "Toyota", "Chevrolet", "Ford", "Nissan", "Kia", "Acura", "Lexus", "Mercedes"};
-String[]hondaModels = {"Civic", "Accord", "Odessy", "Ridgeline", "CRZ", "S2000"};
-String[]toyotaModels = {"Sienna", "Corolla", "Rav-4", "Tacoma", "Tundra", "Camry"};
-String[]chevyModels = {"Silverado 1500", "Silverado 2500", "Silverado 2500 HD", "Camaro", "Corvette", "Malibu"};
-String[]fordModels = {"F-150", "F-250", "F-250 SuperDuty", "Mustang", "Windstar", "Focus", "Fusion"};
-String[]nissanModels = {"Pathfinder", "Rogue", "GT-R", "Versa", "Frontier", "Quest"};
-String[]kiaModels = {"Sorento", "Rio", "Seltos", "Stinger", "Sportage", "Forte", "Soul"};
-String[]acuraModels = {"TLX", "ILX", "Integra", "MDX", "RDX", "NSX"};
-String[]lexusModels = {"GX", "IS", "LX", "NX", "RZ", "LS"};
-String[]mercModels = {"A-Class", "E-Class", "G-Class", "S-Class", "GLE-Class"};
-*/

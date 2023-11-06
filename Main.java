@@ -12,6 +12,18 @@ public class Main {
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+	
+	private static vehicleClass Car1 = new vehicleClass("Honda", "Civic", 12345, 2020, 1, 0, 1, 0, 3, true);
+	private static vehicleClass Car2 = new vehicleClass("Toyota", "Sienna", 23456, 2012, 1, 1, 1, 0, 0, true);
+	private static vehicleClass Car3 = new vehicleClass("Ford", "Fusion", 34567, 2008, 1, 0, 1, 0, 0, true);
+	private static vehicleClass Car4 = new vehicleClass("Mercedes", "E-Class", 45678, 2018, 1, -1, 1, 0, 0, true);
+	private static vehicleClass Car5 = new vehicleClass("Chevrolet", "Silverado 1500", 56789, 2015, 1, 0, 1, 1, 0, true);
+	private static vehicleClass Car6 = new vehicleClass("Nissan", "GT-R", 67890, 2020, 1, 0, 1, 0, 6, true);
+	private static vehicleClass Car7 = new vehicleClass("Honda", "S2000", 98765, 2009, 1, 0, -1, 0, 0, true);
+	private static vehicleClass Car8 = new vehicleClass("Kia", "Sorento", 87654, 2014, 1, -1, 1, 0, 4, true);
+	private static vehicleClass Car9 = new vehicleClass("Honda", "Accord", 76543, 2019, 1, 0, -1, 0, 0, true);
+	private static vehicleClass Car10 = new vehicleClass("Ford", "F-250", 65432, 2010, 1, -1, 1, 1, 0, true);
+	private static vehicleClass yourCar = new vehicleClass("", "", 0, 0, 0, 0, 0, 0, 0, true);
 	/*
 	Vehicle Class Object Constructor Rules
   	private String make;
@@ -31,162 +43,124 @@ public class Main {
 
  */
 	public static void main(String [] args) {
-	
-	int costVariable;	
-	double cost = 0;
-	boolean[] onFile = {true};
-	Scanner kb = new Scanner(System.in);
-	BooleanBinaryTree tree = new BooleanBinaryTree();
-	ArrayList<vehicleClass> cars = new ArrayList<vehicleClass>();
-	
-	int[] vins = {12345, 23456, 34567, 45678, 56789, 67890, 98765, 87654, 76543, 65432, 0};
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	vehicleClass Car1 = new vehicleClass("Honda", "Civic", 12345, 2020, 1, 0, 1, 0, 3, true);
-	vehicleClass Car2 = new vehicleClass("Toyota", "Sienna", 23456, 2012, 1, 0, 1, 0, 0, true);
-	vehicleClass Car3 = new vehicleClass("Ford", "Fusion", 34567, 2008, 1, 0, 1, 0, 0, true);
-	vehicleClass Car4 = new vehicleClass("Mercedes", "E-Class", 45678, 2018, 1, -1, 1, 0, 0, true);
-	vehicleClass Car5 = new vehicleClass("Chevrolet", "Silverado 1500", 56789, 2015, 1, 0, 1, 1, 0, true);
-	vehicleClass Car6 = new vehicleClass("Nissan", "GT-R", 67890, 2020, -1, 0, 1, 0, 6, true);
-	vehicleClass Car7 = new vehicleClass("Honda", "S2000", 98765, 2009, 1, 0, -1, 0, 0, true);
-	vehicleClass Car8 = new vehicleClass("Kia", "Sorento", 87654, 2014, 1, -1, 1, 0, 4, true);
-	vehicleClass Car9 = new vehicleClass("Honda", "Accord", 76543, 2019, 1, 0, -1, 0, 0, true);
-	vehicleClass Car10 = new vehicleClass("Ford", "F-250", 65432, 2010, 1, -1, 1, 1, 0, true);
-	vehicleClass yourCar = new vehicleClass("", "", 0, 0, 0, 0, 0, 0, 0, true);
-	cars.add(Car1);
-	cars.add(Car2);
-	cars.add(Car3);
-	cars.add(Car4);
-	cars.add(Car5);
-	cars.add(Car6);
-	cars.add(Car7);
-	cars.add(Car8);
-	cars.add(Car9);
-	cars.add(Car10);
-	cars.add(yourCar);
-	
-	
-	//ourTree.printTree(root,  0);
-	
-	int carNumber = 0;
-	carNumber = checkVehicle(onFile, yourCar, kb, vins, cars);
-	if (onFile[0] == false) {
-		carNumber = 10;
-	makeAndModel(yourCar, kb);
-	newUsed(yourCar, kb);
-	if (cars.get(carNumber).getUsedInt() == 0) {
-		System.out.println("You do not need to register your vehicle. The dealership already has already taken care of that for you.");
 		
-		System.exit(0);
-	}
-	year(yourCar, kb);
-	insurance(yourCar, kb);
-	smogged(yourCar, kb);
-	nonOp(yourCar, kb);
-	tickets(yourCar, kb);
+		boolean[] onFile = {true};
+		Scanner kb = new Scanner(System.in);
+		BooleanBinaryTree tree = new BooleanBinaryTree();
+		ArrayList<vehicleClass> cars = new ArrayList<vehicleClass>();
 	
-	}
-	if (onFile[0] == true) {
-		if (cars.get(carNumber).getUsedInt() == -1) {
-			gap();
-			System.out.println("Your vehicle status is not on file...");
-			newUsed(cars.get(carNumber), kb);
-			
-		}
-		if (cars.get(carNumber).getInsuranceInt() == -1) {
-			gap();
-			System.out.println("The status of your current insurance is not on file...");
-			insurance(cars.get(carNumber), kb);
-		}
-		if (cars.get(carNumber).getSmoggedInt() == -1) {
-			gap();
-			System.out.println("Your vehicle's smogged status is not on file...");
-			smogged(cars.get(carNumber), kb);
-		}
-		if (cars.get(carNumber).getNonOpInt() == -1) {
-			gap();
-			System.out.println("Your vehicles non operational status is not on file...");
-			nonOp(cars.get(carNumber), kb);
-		}
-		if (cars.get(carNumber).getTicketsInt() == -1)
-		tickets(cars.get(carNumber), kb);
+		int[] vins = {12345, 23456, 34567, 45678, 56789, 67890, 98765, 87654, 76543, 65432, 0};
+		
+		
+		
+		
+		buildCarArray(cars);// builds the ArrayList of cars on file
+		
+		int carNumber = checkVehicle(onFile, yourCar, kb, vins, cars);
+		checkReg(onFile, yourCar, kb, cars, carNumber);
+		buildTree(cars, yourCar, tree, carNumber);
+		tree.inOrderTraversal(cars.get(carNumber));
+		printReg(cars, yourCar, tree, carNumber);
+		
+	
 		
 	}
 	
-	if(cars.get(carNumber).getUsedInt() == 0) {
-		tree.insert(1, "Used", false);
-	}else {
-			tree.insert(1, "Used", true);
+	
+	
+	
+	
+	
+	//Builds the ArrayList of cars
+	
+	public static void buildCarArray(ArrayList<vehicleClass> cars) {
+		cars.add(Car1);
+		cars.add(Car2);
+		cars.add(Car3);
+		cars.add(Car4);
+		cars.add(Car5);
+		cars.add(Car6);
+		cars.add(Car7);
+		cars.add(Car8);
+		cars.add(Car9);
+		cars.add(Car10);
+		cars.add(yourCar);
+	}
+	
+	
+	
+	
+	
+	
+	
+	public static void printReg(ArrayList<vehicleClass> cars, vehicleClass yourCar, BooleanBinaryTree tree, int carNumber) {
+		int costVariable;
+		double cost = 0;
+		if(cars.get(carNumber).getRegable() == false) {
+			System.out.println("However, if you would like to pay your fees today...");
 		}
-	System.out.println(cars.get(carNumber).getInsurance());
-	wait(3000);
-	if(cars.get(carNumber).getInsuranceInt() == 0) {
-		tree.insert(2,  "Code 3395800000 - No Insurance On File", false);
-	}else {
-		tree.insert(2, "Insurance on File", true);
+		if(cars.get(carNumber).getRegable() == true) {
+			System.out.println(ANSI_GREEN + "You may register your vehicle today..."+ANSI_RESET);
+		}
+		costVariable = getCostOfModelRegistration(cars.get(carNumber).getModel());
+		cost = totalCost(cars.get(carNumber).getTicketCosts(), costVariable);
+		
+		if (cars.get(carNumber).getNonOpInt() == 1) {
+			System.out.printf("The total cost will be \n%.0000f Dollars.", cost/3);
+		}else {	
+		System.out.println(ANSI_GREEN+"The total cost will be\n" +cost+" dollars."+ANSI_RESET);
+		}
 	}
-	if(cars.get(carNumber).getSmoggedInt() == 0) {
-		tree.insert(3, "Code 339566000202 - Vehicle Not Smogged", false);
-	}else {
-		tree.insert(3, "Smogged", true);
-	}
-	if(cars.get(carNumber).getTicketsInt() > 0) {
-		int ans = -1;
-		while (ans >= 0) {
-		System.out.println("You have pending tickets totaling " + cars.get(carNumber).getTicketCosts());
+	
+	
+	
+	
+	
+	
+	
+	
+	public static void buildTree(ArrayList<vehicleClass> cars, vehicleClass yourCar, BooleanBinaryTree tree, int carNumber){
+		if(cars.get(carNumber).getUsedInt() == 0) {
+			tree.insert(1, "Used", false);
+		}else {
+				tree.insert(1, "Used", true);
+			}
+		//System.out.println(cars.get(carNumber).getInsurance());
 		wait(2000);
-		System.out.println("Are you able to pay this today? 0 for No. 1 for Yes");
-			while (!kb.hasNextInt()) {
-				System.out.println("Use 0 for No, not today. \nUse 1 for Yes, I can pay them today");
-				kb.next();
-			}
-			ans = kb.nextInt();
+		if(cars.get(carNumber).getInsuranceInt() == 0) {
+			tree.insert(2,  "Code 3395800000 - No Insurance On File", false);
+		}else {
+			tree.insert(2, "Insurance on File", true);
 		}
-			if(ans == 0) {
-				tree.insert(4, "Tickets Pending", true);
-				
-			}else {tree.insert(4, "Ticket Pending",true);
-			
-			}
-	}
-			
-	tree.inOrderTraversal(cars.get(carNumber));
-	if(cars.get(carNumber).getRegable() == false) {
-		System.out.println("However, if you would like to pay your fees today...");
-	}
-	if(cars.get(carNumber).getRegable() == true) {
-		System.out.println(ANSI_GREEN + "You may register your vehicle today..."+ANSI_RESET);
-	}
-	costVariable = getCostOfModelRegistration(cars.get(carNumber).getModel());
-	cost = totalCost(cars.get(carNumber).getTicketCosts(), costVariable);
-	
-	if (cars.get(carNumber).getNonOpInt() == 1) {
-		System.out.printf("The total cost will be \n%.0000f Dollars.", cost/3);
-	}else {	
-	System.out.println(ANSI_GREEN+"The total cost will be\n" +cost+ANSI_RESET);
+		if(cars.get(carNumber).getSmoggedInt() == 0) {
+			tree.insert(3, "Code 339566000202 - Vehicle Not Smogged", false);
+		}else {
+			tree.insert(3, "Smogged", true);
+		}
 	}
 	
 	
 	
 	
 	
-	//System.out.println("Your Vehicle Info: "+ cars.get(10).toString());
-	}
+	
 	
 	public static void gap() {
 		System.out.println("--------------------------------------------------------------");
 		
 	}
+	
+	
+	
+	
+	
+	/*This accepts an input of numbers from the user and checks them against
+	a collection of vin numbers on file. Returns the number in the array 
+	that the vehicle object is held in. If the object is not predefined 
+	it will always be in element 10 of the ArrayList
+	calls are from the vehicleClass file. 
+	 
+	 */
 
 	public static int checkVehicle(boolean[] onFile, vehicleClass yourCar, Scanner kb, int[] vins, ArrayList<vehicleClass> cars) {
 		
@@ -203,7 +177,7 @@ public class Main {
 		System.out.print("Checking to see if your vin is on file");
 		for (int i = 0; i < 20; i++) {
 			System.out.print(".");
-			wait(300);
+			wait(100);
 		}
 		System.out.println(vin);
 		for (int i = 0; i < vehicleClass.getCount(); i++) {
@@ -225,10 +199,17 @@ public class Main {
 				
 			
 		
-		return 0;
+		return 10;
 		
 	}
-		// User will enter the Make and Model of their vehicle via selections
+	
+	
+	
+	
+	/*This lets the user select the make and model
+	it will populate depending on the selections of the user. 
+	calls are from the carTypes and vehicleClass files.
+	*/
 	
 	public static void makeAndModel(vehicleClass yourCar, Scanner kb) {
 		
@@ -254,7 +235,7 @@ public class Main {
 		while (make <0 || make > 8);
 		
 			
-		//System.out.println("Thank you, You chose " + carTypes.getMake(make));
+		
 		gap();
 		
 			//If the choice is Honda (0)
@@ -275,7 +256,7 @@ public class Main {
 			
 			
 			gap();
-			//System.out.println("Thank you, you chose a " + carTypes.getMake(make) + " " + carTypes.getHondaModel(model));
+			
 			modelName = carTypes.getHondaModel(model);
 		}
 		
@@ -464,11 +445,17 @@ public class Main {
 	}
 			
 	
+	
+	
+	
+	
+	
 				//User will choose whether the vehicle is new or used
+				//updates the attribute in the vehicleClass object for used.
 	
 			public static void newUsed(vehicleClass yourCar, Scanner kb) {
 			int used = -1;
-			boolean usedNew;
+			
 			while (used < 0 || used > 1){
 				System.out.println("Is your vehicle used or new?\n0 for New\n1 for Used");
 					while (!kb.hasNextInt()) {
@@ -486,7 +473,12 @@ public class Main {
 			gap();
 			}
 			
+			
+			
+			
+			
 				//User will enter the year of the vehicle
+				//updates the year attribute in the vehicleClass object.
 			
 			public static void year(vehicleClass yourCar, Scanner kb) {
 			int year = -1;
@@ -508,7 +500,11 @@ public class Main {
 			}
 			
 			
-				// User will choose if they have insurance
+			
+			
+				// User will choose if they have insurance and 
+			// update the attribute on the object in vehicleClass
+			// a 0 will dis-allow registration
 			
 			public static void insurance(vehicleClass yourCar, Scanner kb) {
 			int ins = -1;
@@ -531,11 +527,17 @@ public class Main {
 			}
 			
 			
+			
+			
+			
+			
 				// User will choose if their vehicle is smogged
+			// and will update the attribute in the vehicleClass
+			// a 0 will dis-allow registration
 			
 			public static void smogged(vehicleClass yourCar, Scanner kb) {
 			int smg = -1;
-			boolean smogged;
+			//boolean smogged;
 			while (smg < 0 || smg > 1)
 			{
 				System.out.println("Is your vehicle smogged?\nPress '1' for Yes\nPress '0' for No");
@@ -554,7 +556,14 @@ public class Main {
 			}
 			
 			
+			
+			
+			
+			
 				//User will choose if their vehicle is non operational
+			// and will update the attribute in the vehiclClass object
+			//a 0 will continue registration as normal. a 1 will make 
+			// Registration costs significantly less. 
 			
 			public static void nonOp(vehicleClass yourCar, Scanner kb) {
 			int nop = -1;
@@ -578,21 +587,26 @@ public class Main {
 			}
 			
 			
+			
+			
+			
 				//User will choose if they have any outstanding tickets
+			// there is a random 50% chance the user will have tickets on file
+			// if check1 comes back true, a random number between 1 and 10 
+			// will generate and determine the number of tickets.
 			
 			public static void tickets(vehicleClass yourCar, Scanner kb) {
 			Random rand = new Random();
 		    int t = rand.nextInt(0, 10);
-			int tkt = -10;
-			int numTickets = -1;
+			//int tkt = -10;
+			//int numTickets = -1;
 			boolean check1;
-			boolean check2;
-			boolean check3;
+			
 			
 			System.out.println("Lets check to see if you have any tickets on file");
 			for (int i = 0; i < 20; i++) {
 				System.out.print(".");
-				wait(300);
+				wait(100);
 			}
 			System.out.println();
 			check1 = rand.nextBoolean();
@@ -614,6 +628,12 @@ public class Main {
 					Thread.currentThread().interrupt();
 				 }
 			}
+			
+			
+			//Determines the cost of registration based on the type of
+			//vehicle being registered. 
+			
+			
 			public static int getCostOfModelRegistration(String model) {
 				int size;
 				int i = 0;
@@ -671,37 +691,43 @@ public class Main {
 
 return -1;
 			}
+			
+			//gets the total cost of registration adding in the cost of tickets
+			//type of vehicle and ticket modifier depending on the vehicle type.
+			
+			
+			
 			public static double totalCost(int ticketCost, int modelNum) {
 				double regCost;
 				double ticketModifier;
 				if (modelNum == 0) {
 					regCost = 200;
-					ticketModifier = 1.7;
+					ticketModifier = 1.7; //for SUV's
 					return regCost + (ticketCost*ticketModifier);
 				}
 				if (modelNum == 1) {
 					regCost = 120;
-					ticketModifier = 1.2;
+					ticketModifier = 1.2; //for Compact Cars
 					return regCost + (ticketCost*ticketModifier);
 				}
 				if (modelNum == 2) {
 					regCost = 145;
-					ticketModifier = 1.5;
+					ticketModifier = 1.5; //for Sedans
 					return regCost + (ticketCost*ticketModifier);
 				}
 				if (modelNum == 3) {
 					regCost = 275;
-					ticketModifier = 2.3;
+					ticketModifier = 2.3; //for Trucks
 					return regCost + (ticketCost*ticketModifier);
 				}
 				if (modelNum == 4) {
 					regCost = 220;
-					ticketModifier = 2.9;
+					ticketModifier = 2.9; // for Sports Cars
 					return regCost + (ticketCost*ticketModifier);
 				}
 				if (modelNum == 5) {
 					regCost = 50;
-					ticketModifier = .9;
+					ticketModifier = .9; // for Minivans
 					return regCost + (ticketCost*ticketModifier);
 				}
 				if (modelNum == -1) {
@@ -712,7 +738,63 @@ return -1;
 			}
 			
 			
+			
+			//checks to see if the user needs to register their vehicle.
+			//if this comes back false, the user will be notified and the 
+			//program will end
+			
+			
+	public static int checkReg(boolean[] onFile, vehicleClass yourCar, Scanner kb, ArrayList<vehicleClass> cars, int carNumber) {
+		
+		if (onFile[0] == false) {
+			carNumber = 10;
+		makeAndModel(yourCar, kb);
+		newUsed(yourCar, kb);
+		if (cars.get(carNumber).getUsedInt() == 0) {
+			System.out.println("You do not need to register your vehicle. The dealership already has already taken care of that for you.");
+			
+			System.exit(0);
+		}
+		year(yourCar, kb);
+		insurance(yourCar, kb);
+		smogged(yourCar, kb);
+		nonOp(yourCar, kb);
+		tickets(yourCar, kb);
+		
+		}
+		if (onFile[0] == true) {
+			if (cars.get(carNumber).getUsedInt() == -1) {
+				gap();
+				System.out.println("Your vehicle status is not on file...");
+				newUsed(cars.get(carNumber), kb);
+				
+			}
+			if (cars.get(carNumber).getInsuranceInt() == -1) {
+				gap();
+				System.out.println("The status of your current insurance is not on file...");
+				insurance(cars.get(carNumber), kb);
+			}
+			if (cars.get(carNumber).getSmoggedInt() == -1) {
+				gap();
+				System.out.println("Your vehicle's smogged status is not on file...");
+				smogged(cars.get(carNumber), kb);
+			}
+			if (cars.get(carNumber).getNonOpInt() == -1) {
+				gap();
+				System.out.println("Your vehicles non operational status is not on file...");
+				nonOp(cars.get(carNumber), kb);
+			}
+			if (cars.get(carNumber).getTicketsInt() == -1)
+			tickets(cars.get(carNumber), kb);
+			
+		}
+		
+		return 0;
+	}
+				
 }
+
+
 			
 
 			

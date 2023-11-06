@@ -43,7 +43,7 @@ BooleanNode root;
 				if(root != null) {
 					inOrderTraversalRec(root.left, yourCar);
 					if (root.value == false) {
-						System.out.println(ANSI_RED + "You may not register your vehicle today");
+						System.out.println(ANSI_YELLOW + "You may not register your vehicle today");
 						System.out.println("Reason code: "+ root.name + ANSI_RESET);
 						yourCar.setReg(false);
 						
