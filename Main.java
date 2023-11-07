@@ -1,3 +1,15 @@
+/*Project 2 Group
+ * Terry W.
+ * Brynn C.
+ * Daniella P.
+ * Emran Z.
+ * Mojtaba K.
+ * Justim M.
+ * Oanh D.
+ * 
+ */
+
+
 package project2;
 
 import java.util.*;
@@ -53,17 +65,14 @@ public class Main {
 		
 		
 		
-		
+		//method calls
 		buildCarArray(cars);// builds the ArrayList of cars on file
-		
-		int carNumber = checkVehicle(onFile, yourCar, kb, vins, cars);
-		checkReg(onFile, yourCar, kb, cars, carNumber);
-		buildTree(cars, yourCar, tree, carNumber);
-		tree.inOrderTraversal(cars.get(carNumber));
-		printReg(cars, yourCar, tree, carNumber);
-		
+		int carNumber = checkVehicle(onFile, yourCar, kb, vins, cars); //checks the vehicle agains the vin number
+		checkReg(onFile, yourCar, kb, cars, carNumber); //checks the vehicle against current registration
+		buildTree(cars, yourCar, tree, carNumber); //builds the tree for decision making
+		tree.inOrderTraversal(cars.get(carNumber)); //makes the decisions based on the tree thats been build
+		printReg(cars, yourCar, tree, carNumber); //prints the registration costs based on vehicle type and tickets on file.
 	
-		
 	}
 	
 	
@@ -91,7 +100,7 @@ public class Main {
 	
 	
 	
-	
+	//adds up all the costs and displays the registration in dollar amount. 
 	
 	public static void printReg(ArrayList<vehicleClass> cars, vehicleClass yourCar, BooleanBinaryTree tree, int carNumber) {
 		int costVariable;
@@ -117,7 +126,7 @@ public class Main {
 	
 	
 	
-	
+	//builds the tree using the boolean values in the vehicleClass object (yourCar)
 	
 	public static void buildTree(ArrayList<vehicleClass> cars, vehicleClass yourCar, BooleanBinaryTree tree, int carNumber){
 		if(cars.get(carNumber).getUsedInt() == 0) {
@@ -125,7 +134,7 @@ public class Main {
 		}else {
 				tree.insert(1, "Used", true);
 			}
-		//System.out.println(cars.get(carNumber).getInsurance());
+		
 		wait(2000);
 		if(cars.get(carNumber).getInsuranceInt() == 0) {
 			tree.insert(2,  "Code 3395800000 - No Insurance On File", false);
@@ -179,9 +188,9 @@ public class Main {
 			System.out.print(".");
 			wait(100);
 		}
-		System.out.println(vin);
+		
 		for (int i = 0; i < vehicleClass.getCount(); i++) {
-			System.out.println(cars.get(i).getVin());
+			
 			
 			if (vin == cars.get(i).getVin()) {
 				System.out.println("\n\n\n\n\n\n\nThis vehicle with vin " + cars.get(i).getVin()+ " is on file");
@@ -297,7 +306,7 @@ public class Main {
 					}
 					model = kb.nextInt();
 			}
-			//while (model < 0 || model > carTypes.sizeOf(makeName));
+		
 			
 			gap();
 			System.out.println("Thank you, you chose a " + carTypes.getMake(make) + " " + carTypes.getChevyModel(model));
@@ -319,7 +328,7 @@ public class Main {
 					}
 					model = kb.nextInt();
 			}
-			//while (model < 0 || model > carTypes.sizeOf(makeName));
+			
 			
 			gap();
 			System.out.println("Thank you, you chose a " + carTypes.getMake(make) + " " + carTypes.getFordModel(model));
@@ -341,7 +350,7 @@ public class Main {
 					}
 					model = kb.nextInt();
 			}
-			//while (model < 0 || model > carTypes.sizeOf(makeName));
+		
 			
 			gap();
 			System.out.println("Thank you, you chose a " + carTypes.getMake(make) + " " + carTypes.getNissanModel(model));
@@ -363,7 +372,7 @@ public class Main {
 					}
 					model = kb.nextInt();
 			}
-			//while (model < 0 || model > carTypes.sizeOf(makeName));
+			
 			
 			gap();
 			System.out.println("Thank you, you chose a " + carTypes.getMake(make) + " " + carTypes.getKiaModel(model));
@@ -385,7 +394,7 @@ public class Main {
 					}
 					model = kb.nextInt();
 			}
-			//while (model < 0 || model > carTypes.sizeOf(makeName));
+			
 			
 			gap();
 			System.out.println("Thank you, you chose a " + carTypes.getMake(make) + " " + carTypes.getAcuraModel(model));
@@ -407,7 +416,7 @@ public class Main {
 					}
 					model = kb.nextInt();
 			}
-			//while (model < 0 || model > carTypes.sizeOf(makeName));
+			
 			
 			gap();
 			System.out.println("Thank you, you chose a " + carTypes.getMake(make) + " " + carTypes.getLexusModel(model));
@@ -432,7 +441,7 @@ public class Main {
 			
 			
 			gap();
-			//System.out.println("Thank you, you chose a " + carTypes.getMake(make) + " " + carTypes.getMercModel(model));
+			
 				
 				
 			modelName = carTypes.getMercModel(model);
@@ -522,7 +531,7 @@ public class Main {
 			gap();
 				// sets the vehicle object insurance attribute
 			yourCar.setInsurance(ins);
-			//System.out.println(yourCar.getInsurance());
+			
 			
 			}
 			
@@ -537,7 +546,7 @@ public class Main {
 			
 			public static void smogged(vehicleClass yourCar, Scanner kb) {
 			int smg = -1;
-			//boolean smogged;
+			
 			while (smg < 0 || smg > 1)
 			{
 				System.out.println("Is your vehicle smogged?\nPress '1' for Yes\nPress '0' for No");
@@ -598,8 +607,7 @@ public class Main {
 			public static void tickets(vehicleClass yourCar, Scanner kb) {
 			Random rand = new Random();
 		    int t = rand.nextInt(0, 10);
-			//int tkt = -10;
-			//int numTickets = -1;
+			
 			boolean check1;
 			
 			
